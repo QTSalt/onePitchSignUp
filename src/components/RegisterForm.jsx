@@ -77,25 +77,27 @@ export default function RegisterForm({ tournament }) {
           your spot before <strong>{tournament.registrationPolicy.deadline}</strong>. Remember —{' '}
           {tournament.registrationPolicy.coreRule}.
         </p>
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-3">
           {paymentMethods.map((method) =>
-            method.url ? (
+            method.qr ? (
               <a
                 key={method.app}
                 href={method.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full bg-white/15 hover:bg-white/25 px-4 py-2 text-sm font-semibold transition-colors"
+                className="bg-white rounded-xl p-3 flex flex-col items-center hover:scale-[1.03] transition-transform"
               >
-                Pay via {method.app} →
+                <img src={method.qr} alt={`${method.app} QR code`} className="w-24 h-24" />
+                <span className="text-field-950 text-xs font-bold mt-1.5">{method.app}</span>
               </a>
             ) : (
-              <span
+              <div
                 key={method.app}
-                className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold"
+                className="bg-white/10 rounded-xl px-4 py-3 flex flex-col items-center justify-center w-24"
               >
-                {method.app}: {method.handle}
-              </span>
+                <span className="text-2xl mb-1">💵</span>
+                <span className="text-xs font-bold text-center">{method.app}</span>
+              </div>
             )
           )}
         </div>

@@ -49,12 +49,14 @@ const tournament = {
         app: 'CashApp',
         handle: '$ThomasPeel',
         url: 'https://cash.app/$ThomasPeel',
+        qr: '/payment/cashapp-qr.png',
         requiredMemoNote: "Team Name and Coach's Last Name",
       },
       {
         app: 'Venmo',
-        handle: 'Tap to pay',
+        handle: 'Scan to pay',
         url: 'https://venmo.com/code?user_id=1948767808913408965&created=1787213535',
+        qr: '/payment/venmo-qr.png',
         requiredMemoNote: "Team Name and Coach's Last Name",
       },
       {

@@ -45,27 +45,31 @@ export default function Pricing({ tournament }) {
 
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
               <h3 className="font-bold text-lg text-sun-400 mb-3">How to Pay</h3>
-              <div className="space-y-2">
-                {paymentMethods.map((method) => (
-                  <div
-                    key={method.app}
-                    className="flex items-center justify-between gap-3 bg-white/5 rounded-xl px-4 py-3"
-                  >
-                    <span className="font-semibold text-white text-sm">{method.app}</span>
-                    {method.url ? (
-                      <a
-                        href={method.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sun-400 hover:text-sun-300 font-semibold text-sm underline underline-offset-2"
-                      >
-                        {method.handle}
-                      </a>
-                    ) : (
-                      <span className="text-field-100/80 text-sm">{method.handle}</span>
-                    )}
-                  </div>
-                ))}
+              <div className="grid grid-cols-3 gap-3">
+                {paymentMethods.map((method) =>
+                  method.qr ? (
+                    <a
+                      key={method.app}
+                      href={method.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white rounded-xl p-3 flex flex-col items-center text-center hover:scale-[1.03] transition-transform"
+                    >
+                      <img src={method.qr} alt={`${method.app} QR code`} className="w-full max-w-[110px] aspect-square" />
+                      <span className="text-field-950 text-xs font-bold mt-2">{method.app}</span>
+                      <span className="text-stone-500 text-[11px]">{method.handle}</span>
+                    </a>
+                  ) : (
+                    <div
+                      key={method.app}
+                      className="bg-white/5 rounded-xl p-3 flex flex-col items-center justify-center text-center"
+                    >
+                      <span className="text-3xl mb-1">💵</span>
+                      <span className="text-white text-xs font-bold">{method.app}</span>
+                      <span className="text-field-100/70 text-[11px] mt-0.5">{method.handle}</span>
+                    </div>
+                  )
+                )}
               </div>
               <p className="text-xs uppercase tracking-wide text-field-200/70 font-semibold mt-4 mb-1">
                 Required Memo Note
