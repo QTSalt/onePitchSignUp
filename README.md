@@ -33,9 +33,9 @@ section of the site reads from that file.
 The `charityEvent` object in `src/data/tournament.js` drives the "Charity
 Swing-Off" section (`src/components/CharitySwingOff.jsx`) — the post-tournament
 fundraiser where players face real fastpitch pitching. Each batter gets 5
-pitches; every swing is scored against `scoringTiers`, and the batter's final
-match percentage is the average of all 5 results, applied to their declared
-donation.
+pitches; every swing is scored against `scoringTiers` independently, and each
+swing's match percentage is added on top of the batter's declared donation —
+they stack rather than average out, so one big hit isn't diluted by a miss.
 
 `beneficiary` is currently `"To Be Announced"` since the donation recipient
 hasn't been finalized — update it once that's decided.

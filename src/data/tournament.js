@@ -160,13 +160,13 @@ const tournament = {
     beneficiary: 'To Be Announced',
     timing: 'Immediately following the tournament — same day, same fields.',
     description:
-      "After the last out of the tournament, we're bringing in fastpitch pitchers for a charity fundraiser open to any player who wants to step in. Declare a donation amount before you swing, then take 5 pitches from a real fastpitch arm. Every swing is scored, and your match percentage is the average across all 5 — so consistency pays off, not just one lucky homer.",
+      "After the last out of the tournament, we're bringing in fastpitch pitchers for a charity fundraiser open to any player who wants to step in. Declare a donation amount before you swing, then take 5 pitches from a real fastpitch arm. Every swing is scored on its own, and each swing's match stacks on top of your pledge — so every solid hit adds more, and a great swing is never watered down by a miss.",
     pledgeModel: {
       pitchesPerBatter: 5,
       summary:
-        'Declare your donation amount before stepping into the box. Each of your 5 swings is scored using the tiers below. Your match percentage is the average of all 5 results, applied to your full pledge.',
+        "Declare your donation amount before stepping into the box. Each of your 5 swings is scored independently using the tiers below, and every swing's match percentage is added on top of your pledge — they stack rather than average out.",
       example:
-        'Example: You pledge $30 and swing 5 times — Foul Ball (10%), No Contact (0%), Infield Contact (20%), Single (25%), No Contact (0%). Average match = 11%. That adds $3.30 on top of your $30 donation.',
+        'Example: You pledge $30 and swing 5 times — Foul Ball (10%), No Contact (0%), Infield Contact (20%), Single (25%), No Contact (0%). Add up the matches: 10% + 0% + 20% + 25% + 0% = 55% of your pledge, or $16.50. Total donation: $46.50.',
     },
     scoringTiers: [
       {
