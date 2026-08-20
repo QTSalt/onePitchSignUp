@@ -82,6 +82,12 @@ const tournament = {
       icon: '🚻',
     },
     {
+      title: 'Check-In & Bat Check',
+      description:
+        'Arrive at least 30 minutes before your scheduled game time to check in and have your bats checked and tagged by tournament staff.',
+      icon: '⏰',
+    },
+    {
       title: 'Equipment',
       description:
         'Game balls are provided. All bats must bear the required certification stamp and pass umpire inspection — every bat will be checked and tagged by tournament staff before play.',
