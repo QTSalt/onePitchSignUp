@@ -81,14 +81,17 @@ Both the team registration form (`src/components/RegisterForm.jsx`) and the
 free agent form (`src/components/FreeAgentForm.jsx`) post to the same Google
 Apps Script Web App, which appends each submission as a row in a Google
 Sheet — team registrations go to a "Team Registrations" tab, free agent
-sign-ups go to a "Free Agents" tab. No server or database required.
+sign-ups go to a "Free Agents" tab — and emails the submitter a confirmation.
+No server or database required.
 
 1. Create a new Google Sheet (e.g. "One Pitch-No Bitch Registrations").
 2. Open **Extensions > Apps Script**, delete the placeholder code, and paste
    in the contents of `Code.gs` (in this repo's root).
 3. Run the `setupSheet` function once (pick it from the dropdown next to the
    Run button) to create both tabs with header rows and authorize the
-   script.
+   script. Approve the permission prompts — this now includes "Send email
+   as you", since confirmation emails go out via `MailApp` from the same
+   Google account that owns this Sheet/script.
 4. **Deploy > New deployment > Web app.** Set "Execute as" to `Me` and "Who
    has access" to `Anyone`. Deploy and authorize if prompted.
 5. Copy the deployment URL (ends in `/exec`).
@@ -97,8 +100,25 @@ sign-ups go to a "Free Agents" tab. No server or database required.
    paste it once.
 
 Until `SCRIPT_URL` is set, both forms still work in the browser (they show
-the confirmation screen) but don't save anything anywhere — they log a
-console warning to remind you it's not connected yet.
+the confirmation screen) but don't save anything anywhere and don't send any
+email — they log a console warning to remind you it's not connected yet.
+
+### Confirmation emails
+
+`Code.gs` sends a confirmation email (via `MailApp.sendEmail`) right after
+each submission is appended to the Sheet — one flavor for team registrations
+(payment amount, deadline, memo note, and how to pay) and one for free agent
+sign-ups (pool mechanics, fee only due once placed). The tournament name,
+date, location, price, deadline, and payment options used in those emails
+are set in the `TOURNAMENT` object at the top of `Code.gs` — update it if any
+of those change, since Apps Script can't read `src/data/tournament.js`
+directly and the two are kept in sync by hand.
+
+Email sending is wrapped in its own try/catch, so if it ever fails (bad
+address, daily quota hit, etc.) the row is still saved to the Sheet — the
+Sheet stays the source of truth even if an email doesn't go out. A regular
+Gmail account gets ~100 emails/day, Workspace ~1,500/day — either is far
+more than this tournament's 8-team cap plus free agent pool will use.
 
 ## Tech stack
 
