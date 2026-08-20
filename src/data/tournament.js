@@ -206,7 +206,7 @@ const tournament = {
       },
     ],
     scoringNote:
-      'Hit zones are marked on the field (cones/rope) ahead of time so every swing is scored the same way for every batter — no judgment calls.',
+      "Volunteers stationed on the field call each swing's outcome in real time.",
     pitcherStrikeoutBonus: {
       amountUSD: 100,
       label: '$100 / Strikeout',
