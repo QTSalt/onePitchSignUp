@@ -14,8 +14,8 @@ export default function Nav({ tournament }) {
             <a href="#rules" className="hover:text-sun-400 transition-colors">Rules</a>
             <a href="#tiebreakers" className="hover:text-sun-400 transition-colors">Tie-Breakers</a>
             <a href="#pricing" className="hover:text-sun-400 transition-colors">Pricing</a>
-            <a href="#free-agents" className="hover:text-sun-400 transition-colors">Free Agents</a>
             <a href="#charity" className="hover:text-sun-400 transition-colors">Charity Swing-Off</a>
+            <a href="#free-agents" className="hover:text-sun-400 transition-colors">Free Agents</a>
           </div>
           <a
             href="#register"
