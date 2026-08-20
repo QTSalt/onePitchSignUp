@@ -43,7 +43,7 @@ const tournament = {
     coreRule: 'No Pay, No Play',
     details:
       "Your team's spot is not guaranteed until full payment is received. Registration closes automatically once 8 teams have paid.",
-    deadline: 'INSERT_DEADLINE_DATE_HERE',
+    deadline: 'September 19, 2026',
     paymentMethods: [
       {
         app: 'CashApp',
