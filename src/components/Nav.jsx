@@ -1,4 +1,4 @@
-export default function Nav() {
+export default function Nav({ tournament }) {
   return (
     <nav className="sticky top-0 z-50 bg-field-950/95 backdrop-blur supports-[backdrop-filter]:bg-field-950/90 border-b border-field-800 shadow-lg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -7,7 +7,7 @@ export default function Nav() {
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sun-500 text-field-950 text-sm">
               ⚾
             </span>
-            One Pitch Showdown
+            {tournament.organizationName}
           </a>
           <div className="hidden md:flex items-center gap-6 text-sm font-semibold text-field-100">
             <a href="#format" className="hover:text-sun-400 transition-colors">Format</a>

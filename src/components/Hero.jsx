@@ -1,5 +1,8 @@
 export default function Hero({ tournament }) {
-  const { logistics } = tournament
+  const { logistics, tournamentName, organizationName } = tournament
+  const nameWords = tournamentName.trim().split(' ')
+  const nameLead = nameWords.slice(0, -1).join(' ')
+  const nameAccent = nameWords[nameWords.length - 1]
 
   return (
     <header
@@ -16,11 +19,12 @@ export default function Hero({ tournament }) {
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14 sm:pt-24 sm:pb-20 text-center">
         <p className="inline-block text-sun-400 font-bold tracking-[0.25em] text-xs sm:text-sm uppercase mb-4 border border-sun-500/40 rounded-full px-4 py-1.5">
-          Slowpitch Softball · One Pitch Tournament
+          {organizationName} · Slowpitch Softball
         </p>
 
         <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none uppercase mb-4">
-          The One Pitch <span className="text-sun-400">Showdown</span>
+          {nameLead ? `${nameLead} ` : ''}
+          <span className="text-sun-400">{nameAccent}</span>
         </h1>
 
         <p className="text-field-100/90 text-base sm:text-lg max-w-2xl mx-auto mb-10">

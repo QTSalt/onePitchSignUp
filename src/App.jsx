@@ -12,7 +12,7 @@ import Footer from './components/Footer.jsx'
 export default function App() {
   return (
     <>
-      <Nav />
+      <Nav tournament={tournament} />
       <Hero tournament={tournament} />
       <StatsStrip tournament={tournament} />
       <main>
@@ -22,7 +22,7 @@ export default function App() {
         <Pricing tournament={tournament} />
         <RegisterSection tournament={tournament} />
       </main>
-      <Footer />
+      <Footer tournament={tournament} />
     </>
   )
 }

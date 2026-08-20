@@ -1,7 +1,7 @@
-# The One Pitch Showdown — Registration Site
+# One Pitch-No Bitch — Registration Site
 
-A React + Vite + Tailwind CSS single-page site for registering teams for a
-one-pitch slowpitch softball tournament.
+A React + Vite + Tailwind CSS single-page site for registering teams for
+Quinntessential Softball's one-pitch slowpitch softball tournament.
 
 ## Getting started
 
@@ -35,7 +35,7 @@ The registration form (`src/components/RegisterForm.jsx`) posts to a Google
 Apps Script Web App, which appends each submission as a row in a Google
 Sheet. No server or database required.
 
-1. Create a new Google Sheet (e.g. "One Pitch Showdown Registrations").
+1. Create a new Google Sheet (e.g. "One Pitch-No Bitch Registrations").
 2. Open **Extensions > Apps Script**, delete the placeholder code, and paste
    in the contents of `Code.gs` (in this repo's root).
 3. Run the `setupSheet` function once (pick it from the dropdown next to the

@@ -2,7 +2,8 @@
 // below once your date, park, deadline, and payment handle are locked in —
 // every component reads from here.
 const tournament = {
-  tournamentName: 'The One Pitch Showdown',
+  organizationName: 'Quinntessential Softball',
+  tournamentName: 'One Pitch-No Bitch',
   eventType: 'Slowpitch Softball - One Pitch Tournament',
   logistics: {
     date: 'INSERT_DATE_HERE',
