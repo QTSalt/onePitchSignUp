@@ -24,6 +24,14 @@ export default function CharitySwingOff({ tournament }) {
               <p className="text-stone-600 text-sm leading-relaxed">{charityEvent.pledgeModel.summary}</p>
             </div>
 
+            <div className="rounded-2xl bg-white border-2 border-sun-500 p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-dirt-700 mb-1">Pitcher Bonus</p>
+              <p className="font-display text-3xl text-dirt-700 mb-2">{charityEvent.pitcherStrikeoutBonus.label}</p>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                {charityEvent.pitcherStrikeoutBonus.description}
+              </p>
+            </div>
+
             <div className="rounded-2xl bg-dirt-900 text-white p-6 shadow-sm">
               <h3 className="font-bold text-sun-400 text-xs uppercase tracking-wide mb-2">Example</h3>
               <p className="text-dirt-50/90 text-sm leading-relaxed">{charityEvent.pledgeModel.example}</p>

@@ -185,6 +185,12 @@ const tournament = {
     ],
     scoringNote:
       'Hit zones are marked on the field (cones/rope) ahead of time so every swing is scored the same way for every batter — no judgment calls.',
+    pitcherStrikeoutBonus: {
+      amountUSD: 100,
+      label: '$100 / Strikeout',
+      description:
+        "On top of every batter's matched donation, Quinntessential Softball will donate $100 for every strikeout a fastpitch pitcher throws — three strikes against one batter.",
+    },
   },
 }
 
