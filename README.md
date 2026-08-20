@@ -29,6 +29,18 @@ handle, deadline) lives in one place: `src/data/tournament.js`. Update the
 `INSERT_*` placeholder values there once they're finalized — every section of
 the site reads from that file.
 
+### Charity Swing-Off
+
+The `charityEvent` object in `src/data/tournament.js` drives the "Charity
+Swing-Off" section (`src/components/CharitySwingOff.jsx`) — the post-tournament
+fundraiser where players face real fastpitch pitching. Each batter gets 5
+pitches; every swing is scored against `scoringTiers`, and the batter's final
+match percentage is the average of all 5 results, applied to their declared
+donation.
+
+`beneficiary` is currently a placeholder (`INSERT_CHARITY_NAME_HERE`) since the
+donation recipient hasn't been finalized — update it once that's decided.
+
 ## Wiring up registrations to a Google Sheet
 
 The registration form (`src/components/RegisterForm.jsx`) posts to a Google

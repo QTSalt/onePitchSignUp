@@ -70,6 +70,13 @@ export default function Hero({ tournament }) {
         <p className="mt-5 text-xs text-field-200/70 font-semibold uppercase tracking-wide">
           Only 8 team spots · No Pay, No Play
         </p>
+
+        <a
+          href="#charity"
+          className="mt-4 inline-flex items-center gap-1.5 text-sun-400 hover:text-sun-300 text-xs sm:text-sm font-bold uppercase tracking-wide transition-colors"
+        >
+          🥎 Stick around after for our Charity Swing-Off fundraiser →
+        </a>
       </div>
 
       <div className="stitch-divider" />

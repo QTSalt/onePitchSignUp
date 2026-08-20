@@ -102,6 +102,61 @@ const tournament = {
     weather:
       'If the city closes the fields due to severe weather, teams will receive a full refund minus a small fee to cover non-refundable insurance and ball costs.',
   },
+  charityEvent: {
+    name: 'The Charity Swing-Off',
+    isCharityEvent: true,
+    tagline: 'Five pitches. Real fastpitch heat. Every swing raises money for a good cause.',
+    beneficiary: 'INSERT_CHARITY_NAME_HERE',
+    timing: 'Immediately following the tournament — same day, same fields.',
+    description:
+      "After the last out of the tournament, we're bringing in fastpitch pitchers for a charity fundraiser open to any player who wants to step in. Declare a donation amount before you swing, then take 5 pitches from a real fastpitch arm. Every swing is scored, and your match percentage is the average across all 5 — so consistency pays off, not just one lucky homer.",
+    pledgeModel: {
+      pitchesPerBatter: 5,
+      summary:
+        'Declare your donation amount before stepping into the box. Each of your 5 swings is scored using the tiers below. Your match percentage is the average of all 5 results, applied to your full pledge.',
+      example:
+        'Example: You pledge $30 and swing 5 times — Foul Ball (10%), No Contact (0%), Infield Contact (20%), Single (25%), No Contact (0%). Average match = 11%. That adds $3.30 on top of your $30 donation.',
+    },
+    scoringTiers: [
+      {
+        outcome: 'No Contact',
+        description: 'Swinging or called strike — no contact made.',
+        matchPercent: 0,
+      },
+      {
+        outcome: 'Foul Ball',
+        description: 'You got a piece of it.',
+        matchPercent: 10,
+      },
+      {
+        outcome: 'Infield Contact',
+        description: 'Fair ball that stays in the infield — grounder, dribbler, or popup.',
+        matchPercent: 20,
+      },
+      {
+        outcome: 'Single',
+        description: 'Ball reaches the outfield grass.',
+        matchPercent: 25,
+      },
+      {
+        outcome: 'Double',
+        description: 'Gap shot or a hard-hit ball to the fence on the ground.',
+        matchPercent: 50,
+      },
+      {
+        outcome: 'Triple',
+        description: "Deep fly ball, off the fence in the air, or over an outfielder's head.",
+        matchPercent: 75,
+      },
+      {
+        outcome: 'Home Run',
+        description: 'Clears the fence.',
+        matchPercent: 100,
+      },
+    ],
+    scoringNote:
+      'Hit zones are marked on the field (cones/rope) ahead of time so every swing is scored the same way for every batter — no judgment calls.',
+  },
 }
 
 export default tournament

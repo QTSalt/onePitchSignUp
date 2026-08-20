@@ -6,6 +6,7 @@ import Format from './components/Format.jsx'
 import Rules from './components/Rules.jsx'
 import TieBreakers from './components/TieBreakers.jsx'
 import Pricing from './components/Pricing.jsx'
+import CharitySwingOff from './components/CharitySwingOff.jsx'
 import RegisterSection from './components/RegisterSection.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -20,6 +21,7 @@ export default function App() {
         <Rules tournament={tournament} />
         <TieBreakers tournament={tournament} />
         <Pricing tournament={tournament} />
+        <CharitySwingOff tournament={tournament} />
         <RegisterSection tournament={tournament} />
       </main>
       <Footer tournament={tournament} />
