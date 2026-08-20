@@ -43,6 +43,7 @@ function setupSheet() {
   setupTab_(ss, 'Free Agents', [
     'Timestamp',
     'Player Name',
+    'Gender',
     'Email',
     'Phone',
     'Experience / Notes',
@@ -77,6 +78,7 @@ function doPost(e) {
     var freeAgentSheet = getOrCreateSheet_(ss, 'Free Agents', [
       'Timestamp',
       'Player Name',
+      'Gender',
       'Email',
       'Phone',
       'Experience / Notes',
@@ -84,6 +86,7 @@ function doPost(e) {
     freeAgentSheet.appendRow([
       new Date(),
       data.playerName || '',
+      data.gender || '',
       data.email || '',
       data.phone || '',
       data.notes || '',

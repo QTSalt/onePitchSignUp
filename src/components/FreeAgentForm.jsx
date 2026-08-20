@@ -3,6 +3,7 @@ import { SCRIPT_URL, SCRIPT_URL_CONFIGURED } from '../lib/scriptUrl.js'
 
 const initialForm = {
   playerName: '',
+  gender: '',
   email: '',
   phone: '',
   notes: '',
@@ -26,6 +27,7 @@ export default function FreeAgentForm({ tournament }) {
     const payload = new URLSearchParams({
       formType: 'freeAgent',
       playerName: form.playerName.trim(),
+      gender: form.gender.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
       notes: form.notes.trim(),
@@ -94,6 +96,27 @@ export default function FreeAgentForm({ tournament }) {
           />
         </div>
         <div>
+          <label htmlFor="fa-gender" className="block text-sm font-semibold text-stone-700 mb-1.5">
+            Gender <span className="text-red-500">*</span>
+          </label>
+          <input
+            required
+            type="text"
+            id="fa-gender"
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
+            placeholder="e.g. Woman, Man, Non-binary"
+            className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
+          />
+          <p className="text-xs text-stone-400 mt-1">
+            Used to help captains meet the co-ed roster requirement.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div>
           <label htmlFor="fa-phone" className="block text-sm font-semibold text-stone-700 mb-1.5">
             Phone <span className="text-red-500">*</span>
           </label>
@@ -108,22 +131,21 @@ export default function FreeAgentForm({ tournament }) {
             className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
           />
         </div>
-      </div>
-
-      <div>
-        <label htmlFor="fa-email" className="block text-sm font-semibold text-stone-700 mb-1.5">
-          Email <span className="text-red-500">*</span>
-        </label>
-        <input
-          required
-          type="email"
-          id="fa-email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="you@email.com"
-          className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
-        />
+        <div>
+          <label htmlFor="fa-email" className="block text-sm font-semibold text-stone-700 mb-1.5">
+            Email <span className="text-red-500">*</span>
+          </label>
+          <input
+            required
+            type="email"
+            id="fa-email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="you@email.com"
+            className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
+          />
+        </div>
       </div>
 
       <div>
