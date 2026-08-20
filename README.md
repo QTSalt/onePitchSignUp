@@ -53,6 +53,28 @@ grouped together. The `$25` fee (set via `freeAgentProgram.feeUSD` in
 on a team, not at sign-up. The team registration section links to this pool
 so captains know it's there if they need it.
 
+## Liability waivers
+
+Two standalone waiver pages live in `public/waivers/` and are linked from the
+footer of every page ("View Tournament Waiver" and "View Charity Swing-Off
+Waiver"), rather than being part of the React app:
+
+- `public/waivers/slowpitch-waiver.html` — covers the main tournament.
+- `public/waivers/fastpitch-waiver.html` — covers the Charity Swing-Off, with
+  a section specifically calling out the added risk of facing live fastpitch
+  pitching (vs. the slowpitch used in the tournament itself).
+
+They're plain static HTML (not wired into the Vite/React build) so they load
+and print independently, with a "Print / Save as PDF" button on each page.
+
+**These are general templates, not legal advice.** Liability waiver
+enforceability varies significantly by state — some jurisdictions limit or
+refuse to enforce releases in certain situations (e.g. gross negligence, or
+minors signing for themselves). Each waiver has an "Organizer note — remove
+before use" box at the top flagging this; have a licensed attorney in your
+state review both documents before relying on them, and remove that note box
+once you're ready to use them for real.
+
 ## Wiring up registrations to a Google Sheet
 
 Both the team registration form (`src/components/RegisterForm.jsx`) and the
