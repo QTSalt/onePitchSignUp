@@ -44,7 +44,16 @@ export default function Hero({ tournament }) {
           </div>
           <div className="bg-white/5 border border-white/10 rounded-xl p-4">
             <p className="text-sun-400 text-[11px] font-bold uppercase tracking-wide mb-1">Location</p>
-            <p className="font-semibold text-sm sm:text-base">{logistics.location.parkName}</p>
+            <p className="font-semibold text-sm sm:text-base">
+              <a
+                href={logistics.location.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-sun-400 transition-colors underline decoration-white/30 underline-offset-2"
+              >
+                {logistics.location.parkName}
+              </a>
+            </p>
           </div>
           <div className="bg-white/5 border border-white/10 rounded-xl p-4">
             <p className="text-sun-400 text-[11px] font-bold uppercase tracking-wide mb-1">Fields</p>

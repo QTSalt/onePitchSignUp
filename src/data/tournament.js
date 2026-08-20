@@ -6,14 +6,15 @@ const tournament = {
   tournamentName: 'One Pitch-No Bitch',
   eventType: 'Slowpitch Softball - One Pitch Tournament',
   logistics: {
-    date: 'INSERT_DATE_HERE',
-    startTime: '09:00 AM',
+    date: 'September 26, 2026',
+    startTime: '10:00 AM',
     endTime: '05:00 PM',
-    durationHours: 8,
+    durationHours: 7,
     fieldsCount: 2,
     location: {
-      parkName: 'INSERT_PARK_NAME_HERE',
-      fields: ['Field 1', 'Field 2'],
+      parkName: 'Lower Woodlands Ballfield',
+      mapUrl: 'https://share.google/1DFfRLqln7C8zP2Iw',
+      fields: ['Field 3', 'Field 6'],
     },
     pricing: {
       entryFeeUSD: 350,
@@ -70,7 +71,7 @@ const tournament = {
     {
       title: 'Equipment',
       description:
-        'Game balls are provided. All bats must bear the required certification stamp and pass umpire inspection.',
+        'Game balls are provided. All bats must bear the required certification stamp and pass umpire inspection — every bat will be checked and tagged by tournament staff before play.',
       icon: '🥎',
     },
   ],
