@@ -2,18 +2,17 @@ import { useState } from 'react'
 import { SCRIPT_URL, SCRIPT_URL_CONFIGURED } from '../lib/scriptUrl.js'
 
 const initialForm = {
-  teamName: '',
-  coachName: '',
+  playerName: '',
   email: '',
   phone: '',
   notes: '',
   agree: false,
 }
 
-export default function RegisterForm({ tournament }) {
+export default function FreeAgentForm({ tournament }) {
   const [form, setForm] = useState(initialForm)
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
-  const payment = tournament.registrationPolicy.paymentMethods[0]
+  const feeUSD = tournament.freeAgentProgram.feeUSD
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -25,9 +24,8 @@ export default function RegisterForm({ tournament }) {
     setStatus('submitting')
 
     const payload = new URLSearchParams({
-      formType: 'team',
-      teamName: form.teamName.trim(),
-      coachName: form.coachName.trim(),
+      formType: 'freeAgent',
+      playerName: form.playerName.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
       notes: form.notes.trim(),
@@ -37,7 +35,7 @@ export default function RegisterForm({ tournament }) {
       // No Sheet connected yet — show the confirmation locally so the form
       // is still usable while setup is finished.
       console.warn(
-        'SCRIPT_URL is not configured — registrations are not being saved anywhere yet. See src/lib/scriptUrl.js.'
+        'SCRIPT_URL is not configured — free agent sign-ups are not being saved anywhere yet. See src/lib/scriptUrl.js.'
       )
       setStatus('success')
       return
@@ -55,7 +53,7 @@ export default function RegisterForm({ tournament }) {
       })
       setStatus('success')
     } catch (err) {
-      console.error('Registration submit failed:', err)
+      console.error('Free agent submit failed:', err)
       setStatus('error')
     }
   }
@@ -63,13 +61,12 @@ export default function RegisterForm({ tournament }) {
   if (status === 'success') {
     return (
       <div className="rounded-2xl bg-field-700 text-white p-8 text-center shadow-lg">
-        <p className="text-3xl mb-2">🎉</p>
-        <h3 className="font-display text-2xl uppercase mb-2">You're On The List!</h3>
+        <p className="text-3xl mb-2">🙋</p>
+        <h3 className="font-display text-2xl uppercase mb-2">You're In The Pool!</h3>
         <p className="text-field-100/90 text-sm max-w-md mx-auto">
-          Thanks, <span className="font-semibold">{form.teamName || 'your team'}</span>! Now send your $
-          {tournament.logistics.pricing.entryFeeUSD} entry fee to <strong>{payment.handle}</strong> with the memo
-          "{payment.requiredMemoNote}" to lock in your spot before{' '}
-          <strong>{tournament.registrationPolicy.deadline}</strong>. Remember — {tournament.registrationPolicy.coreRule}.
+          Thanks, <span className="font-semibold">{form.playerName || 'friend'}</span>! Team captains short on
+          players can now reach out to you directly, and if enough free agents sign up we'll group you into a team
+          of your own. Nothing to pay yet — your ${feeUSD} fee is only due once you're actually placed on a team.
         </p>
       </div>
     )
@@ -82,61 +79,28 @@ export default function RegisterForm({ tournament }) {
     >
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="teamName" className="block text-sm font-semibold text-stone-700 mb-1.5">
-            Team Name <span className="text-red-500">*</span>
+          <label htmlFor="playerName" className="block text-sm font-semibold text-stone-700 mb-1.5">
+            Full Name <span className="text-red-500">*</span>
           </label>
           <input
             required
             type="text"
-            id="teamName"
-            name="teamName"
-            value={form.teamName}
+            id="playerName"
+            name="playerName"
+            value={form.playerName}
             onChange={handleChange}
-            placeholder="e.g. Diamond Dogs"
+            placeholder="e.g. Sam Rivera"
             className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
           />
         </div>
         <div>
-          <label htmlFor="coachName" className="block text-sm font-semibold text-stone-700 mb-1.5">
-            Coach's Full Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            type="text"
-            id="coachName"
-            name="coachName"
-            value={form.coachName}
-            onChange={handleChange}
-            placeholder="e.g. Jordan Alvarez"
-            className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
-          />
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="email" className="block text-sm font-semibold text-stone-700 mb-1.5">
-            Email <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            type="email"
-            id="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="you@email.com"
-            className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
-          />
-        </div>
-        <div>
-          <label htmlFor="phone" className="block text-sm font-semibold text-stone-700 mb-1.5">
+          <label htmlFor="fa-phone" className="block text-sm font-semibold text-stone-700 mb-1.5">
             Phone <span className="text-red-500">*</span>
           </label>
           <input
             required
             type="tel"
-            id="phone"
+            id="fa-phone"
             name="phone"
             value={form.phone}
             onChange={handleChange}
@@ -147,34 +111,52 @@ export default function RegisterForm({ tournament }) {
       </div>
 
       <div>
-        <label htmlFor="notes" className="block text-sm font-semibold text-stone-700 mb-1.5">
-          Anything else we should know? <span className="text-stone-400 font-normal">(optional)</span>
+        <label htmlFor="fa-email" className="block text-sm font-semibold text-stone-700 mb-1.5">
+          Email <span className="text-red-500">*</span>
+        </label>
+        <input
+          required
+          type="email"
+          id="fa-email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="you@email.com"
+          className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="fa-notes" className="block text-sm font-semibold text-stone-700 mb-1.5">
+          Position(s) &amp; experience <span className="text-stone-400 font-normal">(optional)</span>
         </label>
         <textarea
-          id="notes"
+          id="fa-notes"
           name="notes"
           rows={3}
           value={form.notes}
           onChange={handleChange}
-          placeholder="Roster size, jersey colors, questions, etc."
+          placeholder="e.g. Outfield/2B, played rec league for 3 years"
           className="w-full rounded-lg border border-stone-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-field-500 focus:border-field-500"
         />
+        <p className="text-xs text-stone-400 mt-1">
+          Helps team captains browsing the pool know if you're a fit for their roster.
+        </p>
       </div>
 
       <label className="flex items-start gap-3 text-sm text-stone-600 pt-1">
         <input
           required
           type="checkbox"
-          id="agree"
+          id="fa-agree"
           name="agree"
           checked={form.agree}
           onChange={handleChange}
           className="mt-0.5 h-4 w-4 rounded border-stone-300 text-field-600 focus:ring-field-500"
         />
         <span>
-          I understand my team's spot is <strong>not guaranteed</strong> until the ${tournament.logistics.pricing.entryFeeUSD}{' '}
-          entry fee is paid in full ({payment.app}: <strong>{payment.handle}</strong>) before the registration
-          deadline of <strong>{tournament.registrationPolicy.deadline}</strong>.
+          I understand signing up does <strong>not guarantee</strong> a spot on a team, and that the ${feeUSD} free
+          agent fee is only due once I'm actually placed on a team.
         </span>
       </label>
 
@@ -183,18 +165,12 @@ export default function RegisterForm({ tournament }) {
         disabled={status === 'submitting'}
         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-field-700 hover:bg-field-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-base px-8 py-4 shadow-lg transition-colors"
       >
-        {status === 'submitting' ? 'Submitting…' : '🥎 Submit Registration'}
+        {status === 'submitting' ? 'Submitting…' : '🙋 Join The Free Agent Pool'}
       </button>
-
-      <p className="text-xs text-stone-400 pt-1">
-        Submitting this form reserves nothing on its own — payment confirms your spot. We'll follow up by email with
-        payment confirmation once received.
-      </p>
 
       {status === 'error' && (
         <p className="text-xs text-red-600 font-semibold pt-1">
-          Something went wrong sending your registration. Please try again, or contact the Tournament Director
-          directly.
+          Something went wrong sending your sign-up. Please try again, or contact the Tournament Director directly.
         </p>
       )}
     </form>

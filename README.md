@@ -41,26 +41,42 @@ donation.
 `beneficiary` is currently a placeholder (`INSERT_CHARITY_NAME_HERE`) since the
 donation recipient hasn't been finalized — update it once that's decided.
 
+### Free Agent pool
+
+Players without a full team can sign up solo through the "Free Agent Pool"
+section (`src/components/FreeAgentSection.jsx` and `FreeAgentForm.jsx`).
+Signing up doesn't guarantee a roster spot — it adds the player to a pool
+that team captains can browse and reach out to if they need more players. If
+enough free agents sign up on their own to field a full team, they're
+grouped together. The `$25` fee (set via `freeAgentProgram.feeUSD` in
+`src/data/tournament.js`) is only collected once a player is actually placed
+on a team, not at sign-up. The team registration section links to this pool
+so captains know it's there if they need it.
+
 ## Wiring up registrations to a Google Sheet
 
-The registration form (`src/components/RegisterForm.jsx`) posts to a Google
+Both the team registration form (`src/components/RegisterForm.jsx`) and the
+free agent form (`src/components/FreeAgentForm.jsx`) post to the same Google
 Apps Script Web App, which appends each submission as a row in a Google
-Sheet. No server or database required.
+Sheet — team registrations go to a "Team Registrations" tab, free agent
+sign-ups go to a "Free Agents" tab. No server or database required.
 
 1. Create a new Google Sheet (e.g. "One Pitch-No Bitch Registrations").
 2. Open **Extensions > Apps Script**, delete the placeholder code, and paste
    in the contents of `Code.gs` (in this repo's root).
 3. Run the `setupSheet` function once (pick it from the dropdown next to the
-   Run button) to add a header row and authorize the script.
+   Run button) to create both tabs with header rows and authorize the
+   script.
 4. **Deploy > New deployment > Web app.** Set "Execute as" to `Me` and "Who
    has access" to `Anyone`. Deploy and authorize if prompted.
 5. Copy the deployment URL (ends in `/exec`).
-6. Paste that URL into `src/components/RegisterForm.jsx`, replacing the
-   `SCRIPT_URL` placeholder near the top of the file.
+6. Paste that URL into `src/lib/scriptUrl.js`, replacing the `SCRIPT_URL`
+   placeholder. Both forms read from that one file, so you only need to
+   paste it once.
 
-Until `SCRIPT_URL` is set, the form still works in the browser (it shows the
-confirmation screen) but doesn't save anything anywhere — it logs a console
-warning to remind you it's not connected yet.
+Until `SCRIPT_URL` is set, both forms still work in the browser (they show
+the confirmation screen) but don't save anything anywhere — they log a
+console warning to remind you it's not connected yet.
 
 ## Tech stack
 

@@ -91,6 +91,18 @@ const tournament = {
     note: 'All other play follows the official USA Softball rulebook.',
     url: 'https://www.usasoftball.com/official-rulebook/',
   },
+  freeAgentProgram: {
+    feeUSD: 25,
+    tagline: "Don't have a full team? Join the free agent pool.",
+    description:
+      "Sign up as a free agent for $25 and we'll add you to a pool that team captains can pull from if they're short on players. This doesn't guarantee you a spot on a team. If enough free agents sign up on their own to field a full team, we'll group you together. Payment is only due once you're actually placed on a team — nothing is charged at sign-up.",
+    howItWorks: [
+      'Sign up below — no payment due yet.',
+      'Team captains short on players can browse the pool and reach out to you directly.',
+      "If enough free agents sign up, we'll group them into a team of their own.",
+      "Once you're placed on a team, your $25 fee is due.",
+    ],
+  },
   tieBreakers: {
     context:
       'Applied if teams finish morning pool play with identical win-loss records to determine afternoon bracket seeding.',
