@@ -13,7 +13,13 @@ const initialForm = {
 export default function RegisterForm({ tournament }) {
   const [form, setForm] = useState(initialForm)
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
-  const payment = tournament.registrationPolicy.paymentMethods[0]
+  const paymentMethods = tournament.registrationPolicy.paymentMethods
+  const payment = paymentMethods[0]
+  const paymentAppNames = paymentMethods.map((m) => m.app)
+  const paymentAppsText =
+    paymentAppNames.length > 1
+      ? `${paymentAppNames.slice(0, -1).join(', ')} or ${paymentAppNames[paymentAppNames.length - 1]}`
+      : paymentAppNames[0]
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -65,12 +71,34 @@ export default function RegisterForm({ tournament }) {
       <div className="rounded-2xl bg-field-700 text-white p-8 text-center shadow-lg">
         <p className="text-3xl mb-2">🎉</p>
         <h3 className="font-display text-2xl uppercase mb-2">You're On The List!</h3>
-        <p className="text-field-100/90 text-sm max-w-md mx-auto">
+        <p className="text-field-100/90 text-sm max-w-md mx-auto mb-5">
           Thanks, <span className="font-semibold">{form.teamName || 'your team'}</span>! Now send your $
-          {tournament.logistics.pricing.entryFeeUSD} entry fee to <strong>{payment.handle}</strong> with the memo
-          "{payment.requiredMemoNote}" to lock in your spot before{' '}
-          <strong>{tournament.registrationPolicy.deadline}</strong>. Remember — {tournament.registrationPolicy.coreRule}.
+          {tournament.logistics.pricing.entryFeeUSD} entry fee with the memo "{payment.requiredMemoNote}" to lock in
+          your spot before <strong>{tournament.registrationPolicy.deadline}</strong>. Remember —{' '}
+          {tournament.registrationPolicy.coreRule}.
         </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {paymentMethods.map((method) =>
+            method.url ? (
+              <a
+                key={method.app}
+                href={method.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full bg-white/15 hover:bg-white/25 px-4 py-2 text-sm font-semibold transition-colors"
+              >
+                Pay via {method.app} →
+              </a>
+            ) : (
+              <span
+                key={method.app}
+                className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold"
+              >
+                {method.app}: {method.handle}
+              </span>
+            )
+          )}
+        </div>
       </div>
     )
   }
@@ -173,8 +201,8 @@ export default function RegisterForm({ tournament }) {
         />
         <span>
           I understand my team's spot is <strong>not guaranteed</strong> until the ${tournament.logistics.pricing.entryFeeUSD}{' '}
-          entry fee is paid in full ({payment.app}: <strong>{payment.handle}</strong>) before the registration
-          deadline of <strong>{tournament.registrationPolicy.deadline}</strong>.
+          entry fee is paid in full via <strong>{paymentAppsText}</strong> (memo: "{payment.requiredMemoNote}")
+          before the registration deadline of <strong>{tournament.registrationPolicy.deadline}</strong>.
         </span>
       </label>
 

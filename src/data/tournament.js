@@ -46,8 +46,21 @@ const tournament = {
     deadline: 'INSERT_DEADLINE_DATE_HERE',
     paymentMethods: [
       {
-        app: 'Venmo/Zelle/CashApp',
-        handle: 'INSERT_HANDLE_HERE',
+        app: 'CashApp',
+        handle: '$ThomasPeel',
+        url: 'https://cash.app/$ThomasPeel',
+        requiredMemoNote: "Team Name and Coach's Last Name",
+      },
+      {
+        app: 'Venmo',
+        handle: 'Tap to pay',
+        url: 'https://venmo.com/code?user_id=1948767808913408965&created=1787213535',
+        requiredMemoNote: "Team Name and Coach's Last Name",
+      },
+      {
+        app: 'Cash',
+        handle: 'Contact the Tournament Director to arrange',
+        url: null,
         requiredMemoNote: "Team Name and Coach's Last Name",
       },
     ],

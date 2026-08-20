@@ -1,6 +1,6 @@
 export default function Pricing({ tournament }) {
   const { logistics, registrationPolicy, refundAndWeatherPolicy } = tournament
-  const payment = registrationPolicy.paymentMethods[0]
+  const paymentMethods = registrationPolicy.paymentMethods
 
   return (
     <section id="pricing" className="bg-field-950 text-white">
@@ -45,18 +45,32 @@ export default function Pricing({ tournament }) {
 
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
               <h3 className="font-bold text-lg text-sun-400 mb-3">How to Pay</h3>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <div className="flex-1">
-                  <p className="text-xs uppercase tracking-wide text-field-200/70 font-semibold mb-1">{payment.app}</p>
-                  <p className="font-semibold text-white">{payment.handle}</p>
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs uppercase tracking-wide text-field-200/70 font-semibold mb-1">
-                    Required Memo Note
-                  </p>
-                  <p className="font-semibold text-white">{payment.requiredMemoNote}</p>
-                </div>
+              <div className="space-y-2">
+                {paymentMethods.map((method) => (
+                  <div
+                    key={method.app}
+                    className="flex items-center justify-between gap-3 bg-white/5 rounded-xl px-4 py-3"
+                  >
+                    <span className="font-semibold text-white text-sm">{method.app}</span>
+                    {method.url ? (
+                      <a
+                        href={method.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sun-400 hover:text-sun-300 font-semibold text-sm underline underline-offset-2"
+                      >
+                        {method.handle}
+                      </a>
+                    ) : (
+                      <span className="text-field-100/80 text-sm">{method.handle}</span>
+                    )}
+                  </div>
+                ))}
               </div>
+              <p className="text-xs uppercase tracking-wide text-field-200/70 font-semibold mt-4 mb-1">
+                Required Memo Note
+              </p>
+              <p className="font-semibold text-white text-sm">{paymentMethods[0].requiredMemoNote}</p>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
