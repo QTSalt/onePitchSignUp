@@ -17,7 +17,7 @@ const tournament = {
       fields: ['Field 3', 'Field 6'],
     },
     pricing: {
-      entryFeeUSD: 350,
+      entryFeeUSD: 250,
       inclusions: ['Field Rental', 'Umpires', 'Game Balls'],
     },
   },
