@@ -24,6 +24,18 @@ export default function Rules({ tournament }) {
             </div>
           ))}
         </div>
+
+        <p className="text-center text-stone-500 text-sm mt-8">
+          {tournament.rulesReference.note}{' '}
+          <a
+            href={tournament.rulesReference.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-field-700 hover:text-field-600 underline underline-offset-2"
+          >
+            Official USA Softball Rulebook →
+          </a>
+        </p>
       </div>
     </section>
   )

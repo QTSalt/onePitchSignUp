@@ -64,9 +64,21 @@ const tournament = {
       icon: '🛡️',
     },
     {
+      title: '7-Run Rule',
+      description:
+        "Each half-inning is capped at 7 runs. Once the 7th run scores and the umpire calls time, the half-inning ends immediately. Any additional run that scores while the ball is still live — before time is called — still counts.",
+      icon: '7️⃣',
+    },
+    {
       title: 'Time Limit',
       description: 'Games are strictly capped at 40 minutes.',
       icon: '⏱️',
+    },
+    {
+      title: 'Co-Ed Requirement',
+      description:
+        'This is a strict co-ed tournament. Teams may field a maximum of 6 players of the same gender at once, and batting orders may not stack more than 2 same-gender batters in a row.',
+      icon: '🚻',
     },
     {
       title: 'Equipment',
@@ -75,6 +87,10 @@ const tournament = {
       icon: '🥎',
     },
   ],
+  rulesReference: {
+    note: 'All other play follows the official USA Softball rulebook.',
+    url: 'https://www.usasoftball.com/official-rulebook/',
+  },
   tieBreakers: {
     context:
       'Applied if teams finish morning pool play with identical win-loss records to determine afternoon bracket seeding.',
