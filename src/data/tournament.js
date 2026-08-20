@@ -23,7 +23,8 @@ const tournament = {
   },
   format: {
     name: 'Crossover Format',
-    guaranteedGames: 5,
+    guaranteedGames: 4,
+    maxGames: 5,
     gameTimeLimitMinutes: 40,
     phases: [
       {
@@ -32,9 +33,9 @@ const tournament = {
           '8 teams split into two pools of 4. Every team plays 3 rapid-fire pool games to determine afternoon seeding.',
       },
       {
-        name: 'Afternoon Playoffs & Consolation',
+        name: 'Afternoon Single-Elimination Bracket',
         description:
-          'The top 2 teams from each pool advance to the Championship bracket. The bottom 2 teams advance to the Consolation bracket. Everyone plays 2 more games against evenly matched competition to determine final rankings (1st through 8th place).',
+          "The top 2 teams from each pool advance to the Championship bracket; the bottom 2 advance to the Consolation bracket. Both brackets are single-elimination — win your semifinal and you play on for the bracket title, lose and your day is done. Every team is guaranteed at least 1 afternoon game; bracket finalists play a 2nd for the title.",
       },
     ],
   },
