@@ -1,6 +1,6 @@
-// Single source of truth for the tournament page. Edit the INSERT_* values
-// below once your date, park, deadline, and payment handle are locked in —
-// every component reads from here.
+// Single source of truth for the tournament page — every component reads
+// from here. `charityEvent.beneficiary` is currently "To Be Announced";
+// update it once the donation recipient is finalized.
 const tournament = {
   organizationName: 'Quinntessential Softball',
   tournamentName: 'One Pitch-No Bitch',
@@ -157,7 +157,7 @@ const tournament = {
     name: 'The Charity Swing-Off',
     isCharityEvent: true,
     tagline: 'Five pitches. Real fastpitch heat. Every swing raises money for a good cause.',
-    beneficiary: 'INSERT_CHARITY_NAME_HERE',
+    beneficiary: 'To Be Announced',
     timing: 'Immediately following the tournament — same day, same fields.',
     description:
       "After the last out of the tournament, we're bringing in fastpitch pitchers for a charity fundraiser open to any player who wants to step in. Declare a donation amount before you swing, then take 5 pitches from a real fastpitch arm. Every swing is scored, and your match percentage is the average across all 5 — so consistency pays off, not just one lucky homer.",
