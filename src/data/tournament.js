@@ -1,10 +1,14 @@
 // Single source of truth for the tournament page — every component reads
-// from here. `charityEvent.beneficiary` is currently "To Be Announced";
-// update it once the donation recipient is finalized.
+// from here.
 const tournament = {
   organizationName: 'Quinntessential Softball',
   tournamentName: 'One Pitch-No Bitch',
   eventType: 'Slowpitch Softball - One Pitch Tournament',
+  contact: {
+    name: 'Quinn',
+    email: 'emailquinnpeel@gmail.com',
+    phone: '801-834-0974',
+  },
   logistics: {
     date: 'September 26, 2026',
     startTime: '10:00 AM',
@@ -157,7 +161,7 @@ const tournament = {
     name: 'The Charity Swing-Off',
     isCharityEvent: true,
     tagline: 'Five pitches. Real fastpitch heat. Every swing raises money for a good cause.',
-    beneficiary: 'To Be Announced',
+    beneficiary: 'Cleveland Eagles Athletic Departments',
     timing: 'Immediately following the tournament — same day, same fields.',
     description:
       "After the last out of the tournament, we're bringing in fastpitch pitchers for a charity fundraiser open to any player who wants to step in. Declare a donation amount before you swing, then take 5 pitches from a real fastpitch arm. Every swing is scored on its own, and each swing's match stacks on top of your pledge — so every solid hit adds more, and a great swing is never watered down by a miss.",
