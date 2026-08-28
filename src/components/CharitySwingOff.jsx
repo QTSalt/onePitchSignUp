@@ -40,7 +40,9 @@ export default function CharitySwingOff({ tournament }) {
             <div className="rounded-2xl bg-white border border-dirt-200 p-6 shadow-sm">
               <h3 className="font-bold text-field-950 text-lg mb-1">Benefiting</h3>
               <p className="text-stone-600 text-sm">{charityEvent.beneficiary}</p>
-              <p className="text-stone-400 text-xs mt-1">Beneficiary to be finalized and announced.</p>
+              {!charityEvent.beneficiaryFinalized && (
+                <p className="text-stone-400 text-xs mt-1">Beneficiary to be finalized and announced.</p>
+              )}
             </div>
           </div>
 

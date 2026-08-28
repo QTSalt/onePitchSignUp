@@ -37,8 +37,12 @@ pitches; every swing is scored against `scoringTiers` independently, and each
 swing's match percentage is added on top of the batter's declared donation —
 they stack rather than average out, so one big hit isn't diluted by a miss.
 
-`beneficiary` is currently `"To Be Announced"` since the donation recipient
-hasn't been finalized — update it once that's decided.
+`beneficiary` is currently set to the Cleveland Eagles Athletic Departments.
+`beneficiaryFinalized` controls whether the "Beneficiary to be finalized and
+announced" caveat shows underneath it on the site — it's `true` now that a
+recipient is locked in. If the beneficiary ever needs to go back to
+undecided, set `beneficiary` back to a placeholder like `'To Be Announced'`
+and `beneficiaryFinalized` to `false`.
 
 ### Free Agent pool
 

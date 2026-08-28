@@ -162,6 +162,7 @@ const tournament = {
     isCharityEvent: true,
     tagline: 'Five pitches. Real fastpitch heat. Every swing raises money for a good cause.',
     beneficiary: 'Cleveland Eagles Athletic Departments',
+    beneficiaryFinalized: true,
     timing: 'Immediately following the tournament — same day, same fields.',
     description:
       "After the last out of the tournament, we're bringing in fastpitch pitchers for a charity fundraiser open to any player who wants to step in. Declare a donation amount before you swing, then take 5 pitches from a real fastpitch arm. Every swing is scored on its own, and each swing's match stacks on top of your pledge — so every solid hit adds more, and a great swing is never watered down by a miss.",
