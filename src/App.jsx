@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import tournament from './data/tournament.js'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
@@ -27,6 +28,7 @@ export default function App() {
         <FreeAgentSection tournament={tournament} />
       </main>
       <Footer tournament={tournament} />
+      <Analytics />
     </>
   )
 }
