@@ -11,6 +11,7 @@ export default function Nav({ tournament }) {
           </a>
           <div className="hidden md:flex items-center gap-6 text-sm font-semibold text-field-100">
             <a href="#format" className="hover:text-sun-400 transition-colors">Format</a>
+            <a href="#schedule" className="hover:text-sun-400 transition-colors">Schedule</a>
             <a href="#rules" className="hover:text-sun-400 transition-colors">Rules</a>
             <a href="#tiebreakers" className="hover:text-sun-400 transition-colors">Tie-Breakers</a>
             <a href="#pricing" className="hover:text-sun-400 transition-colors">Pricing</a>

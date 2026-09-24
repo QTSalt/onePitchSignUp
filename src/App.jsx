@@ -4,6 +4,7 @@ import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import StatsStrip from './components/StatsStrip.jsx'
 import Format from './components/Format.jsx'
+import Schedule from './components/Schedule.jsx'
 import Rules from './components/Rules.jsx'
 import TieBreakers from './components/TieBreakers.jsx'
 import Pricing from './components/Pricing.jsx'
@@ -20,6 +21,7 @@ export default function App() {
       <StatsStrip tournament={tournament} />
       <main>
         <Format tournament={tournament} />
+        <Schedule tournament={tournament} />
         <Rules tournament={tournament} />
         <TieBreakers tournament={tournament} />
         <Pricing tournament={tournament} />

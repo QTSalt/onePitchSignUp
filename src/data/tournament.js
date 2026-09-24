@@ -26,21 +26,37 @@ const tournament = {
     },
   },
   format: {
-    name: 'Crossover Format',
+    name: 'Round Robin + Playoffs',
+    teamsCount: 5,
     guaranteedGames: 4,
-    maxGames: 5,
+    maxGames: 6,
     gameTimeLimitMinutes: 40,
+    minutesBetweenGames: 15,
     phases: [
       {
-        name: 'Morning Pool Play',
+        name: 'Round Robin',
         description:
-          '8 teams split into two pools of 4. Every team plays 3 rapid-fire pool games to determine afternoon seeding.',
+          'All 5 teams play each other once, so every team gets 4 games. With two fields running, one team sits out each round, and every team gets one bye to rest.',
       },
       {
-        name: 'Afternoon Single-Elimination Bracket',
+        name: 'Playoffs',
         description:
-          "The top 2 teams from each pool advance to the Championship bracket; the bottom 2 advance to the Consolation bracket. Both brackets are single-elimination — win your semifinal and you play on for the bracket title, lose and your day is done. Every team is guaranteed at least 1 afternoon game; bracket finalists play a 2nd for the title.",
+          'The top 4 teams from the round robin advance to the semifinals: #1 vs #4 and #2 vs #3. The semifinal winners meet in the championship game.',
       },
+    ],
+  },
+  schedule: {
+    teams: ['Swingers', 'Thunderhanded', 'Horse Gurlz', 'Blue Salsa Batters', 'Ump Yours'],
+    roundRobin: [
+      { start: '10:00 AM', end: '10:40 AM', games: [['Swingers', 'Blue Salsa Batters'], ['Thunderhanded', 'Horse Gurlz']], bye: 'Ump Yours' },
+      { start: '10:55 AM', end: '11:35 AM', games: [['Ump Yours', 'Horse Gurlz'], ['Swingers', 'Thunderhanded']], bye: 'Blue Salsa Batters' },
+      { start: '11:50 AM', end: '12:30 PM', games: [['Blue Salsa Batters', 'Thunderhanded'], ['Ump Yours', 'Swingers']], bye: 'Horse Gurlz' },
+      { start: '12:45 PM', end: '1:25 PM', games: [['Horse Gurlz', 'Swingers'], ['Blue Salsa Batters', 'Ump Yours']], bye: 'Thunderhanded' },
+      { start: '1:40 PM', end: '2:20 PM', games: [['Thunderhanded', 'Ump Yours'], ['Horse Gurlz', 'Blue Salsa Batters']], bye: 'Swingers' },
+    ],
+    playoffs: [
+      { start: '2:35 PM', end: '3:15 PM', games: [{ label: 'Semifinal', matchup: '#1 seed vs #4 seed' }, { label: 'Semifinal', matchup: '#2 seed vs #3 seed' }] },
+      { start: '3:30 PM', end: '4:10 PM', games: [{ label: 'Championship', matchup: 'Semifinal winners' }, null] },
     ],
   },
   registrationPolicy: {
@@ -48,28 +64,6 @@ const tournament = {
     details:
       "Your team's spot is not guaranteed until full payment is received. Registration closes automatically once 8 teams have paid.",
     deadline: 'September 19, 2026',
-    paymentMethods: [
-      {
-        app: 'CashApp',
-        handle: '$ThomasPeel',
-        url: 'https://cash.app/$ThomasPeel',
-        qr: '/payment/cashapp-qr.png',
-        requiredMemoNote: "Team Name and Coach's Last Name",
-      },
-      {
-        app: 'Venmo',
-        handle: 'Scan to pay',
-        url: 'https://venmo.com/code?user_id=1948767808913408965&created=1787213535',
-        qr: '/payment/venmo-qr.png',
-        requiredMemoNote: "Team Name and Coach's Last Name",
-      },
-      {
-        app: 'Cash',
-        handle: 'Contact the Tournament Director to arrange',
-        url: null,
-        requiredMemoNote: "Team Name and Coach's Last Name",
-      },
-    ],
   },
   rules: [
     {
@@ -131,7 +125,7 @@ const tournament = {
   },
   tieBreakers: {
     context:
-      'Applied if teams finish morning pool play with identical win-loss records to determine afternoon bracket seeding.',
+      'Applied if teams finish round-robin play with identical win-loss records to determine playoff seeding.',
     orderOfOperations: [
       {
         step: 1,
@@ -141,7 +135,7 @@ const tournament = {
       {
         step: 2,
         name: 'Run Differential',
-        rule: 'Total runs scored minus total runs allowed across all morning games.',
+        rule: 'Total runs scored minus total runs allowed across all round-robin games.',
       },
       {
         step: 3,

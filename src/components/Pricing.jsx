@@ -1,13 +1,12 @@
 export default function Pricing({ tournament }) {
   const { logistics, registrationPolicy, refundAndWeatherPolicy } = tournament
-  const paymentMethods = registrationPolicy.paymentMethods
 
   return (
     <section id="pricing" className="bg-field-950 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-sun-400 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2">
-            Entry &amp; Payment
+            Entry Fee
           </p>
           <h2 className="font-display text-3xl sm:text-4xl uppercase">Pricing &amp; Registration Policy</h2>
         </div>
@@ -32,7 +31,7 @@ export default function Pricing({ tournament }) {
             </div>
           </div>
 
-          {/* Policy + payment */}
+          {/* Policy */}
           <div className="lg:col-span-3 space-y-6">
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
               <h3 className="font-bold text-lg text-sun-400 mb-2">{registrationPolicy.coreRule}</h3>
@@ -41,40 +40,6 @@ export default function Pricing({ tournament }) {
                 <span className="font-bold text-white">Payment Deadline:</span>{' '}
                 <span className="text-sun-400 font-semibold">{registrationPolicy.deadline}</span>
               </p>
-            </div>
-
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
-              <h3 className="font-bold text-lg text-sun-400 mb-3">How to Pay</h3>
-              <div className="grid grid-cols-3 gap-3">
-                {paymentMethods.map((method) =>
-                  method.qr ? (
-                    <a
-                      key={method.app}
-                      href={method.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white rounded-xl p-3 flex flex-col items-center text-center hover:scale-[1.03] transition-transform"
-                    >
-                      <img src={method.qr} alt={`${method.app} QR code`} className="w-full max-w-[110px] aspect-square" />
-                      <span className="text-field-950 text-xs font-bold mt-2">{method.app}</span>
-                      <span className="text-stone-500 text-[11px]">{method.handle}</span>
-                    </a>
-                  ) : (
-                    <div
-                      key={method.app}
-                      className="bg-white/5 rounded-xl p-3 flex flex-col items-center justify-center text-center"
-                    >
-                      <span className="text-3xl mb-1">💵</span>
-                      <span className="text-white text-xs font-bold">{method.app}</span>
-                      <span className="text-field-100/70 text-[11px] mt-0.5">{method.handle}</span>
-                    </div>
-                  )
-                )}
-              </div>
-              <p className="text-xs uppercase tracking-wide text-field-200/70 font-semibold mt-4 mb-1">
-                Required Memo Note
-              </p>
-              <p className="font-semibold text-white text-sm">{paymentMethods[0].requiredMemoNote}</p>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">

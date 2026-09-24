@@ -9,9 +9,9 @@ export default function Format({ tournament }) {
         </p>
         <h2 className="font-display text-3xl sm:text-4xl uppercase text-field-950">{format.name}</h2>
         <p className="text-stone-500 mt-3">
-          Every team is guaranteed at least {format.guaranteedGames} games — 3 in pool play, plus at least 1 in the
-          afternoon single-elimination bracket. Win your semifinal and you play a {format.maxGames}th game for the
-          bracket title. Every game is capped at {format.gameTimeLimitMinutes} minutes.
+          Every team is guaranteed {format.guaranteedGames} games in the round robin. The top 4 advance to the
+          playoffs, and the two finalists play {format.maxGames} games in all. Every game is capped at{' '}
+          {format.gameTimeLimitMinutes} minutes, with {format.minutesBetweenGames} minutes between games.
         </p>
       </div>
 
