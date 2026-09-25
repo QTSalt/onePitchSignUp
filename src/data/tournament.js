@@ -27,16 +27,16 @@ const tournament = {
   },
   format: {
     name: 'Round Robin + Playoffs',
-    teamsCount: 5,
+    teamsCount: 6,
     guaranteedGames: 4,
     maxGames: 6,
     gameTimeLimitMinutes: 40,
-    minutesBetweenGames: 15,
+    minutesBetweenGames: 10,
     phases: [
       {
         name: 'Round Robin',
         description:
-          'All 5 teams play each other once, so every team gets 4 games. With two fields running, one team sits out each round, and every team gets one bye to rest.',
+          'Each of the 6 teams plays 4 of the other 5 teams, so every team gets 4 games. With two fields running, two teams rest each round, and every team gets two byes.',
       },
       {
         name: 'Playoffs',
@@ -46,17 +46,18 @@ const tournament = {
     ],
   },
   schedule: {
-    teams: ['Swingers', 'Thunderhanded', 'Horse Gurlz', 'Blue Salsa Batters', 'Ump Yours'],
+    teams: ['Swingers', 'Thunderhanded', 'Horse Gurlz', 'Blue Salsa Batters', 'Ump Yours', "Clyde's Clubbers"],
     roundRobin: [
-      { start: '10:00 AM', end: '10:40 AM', games: [['Swingers', 'Blue Salsa Batters'], ['Thunderhanded', 'Horse Gurlz']], bye: 'Ump Yours' },
-      { start: '10:55 AM', end: '11:35 AM', games: [['Ump Yours', 'Horse Gurlz'], ['Swingers', 'Thunderhanded']], bye: 'Blue Salsa Batters' },
-      { start: '11:50 AM', end: '12:30 PM', games: [['Blue Salsa Batters', 'Thunderhanded'], ['Ump Yours', 'Swingers']], bye: 'Horse Gurlz' },
-      { start: '12:45 PM', end: '1:25 PM', games: [['Horse Gurlz', 'Swingers'], ['Blue Salsa Batters', 'Ump Yours']], bye: 'Thunderhanded' },
-      { start: '1:40 PM', end: '2:20 PM', games: [['Thunderhanded', 'Ump Yours'], ['Horse Gurlz', 'Blue Salsa Batters']], bye: 'Swingers' },
+      { start: '10:00 AM', end: '10:40 AM', games: [['Swingers', 'Thunderhanded'], ['Blue Salsa Batters', 'Ump Yours']], resting: ['Horse Gurlz', "Clyde's Clubbers"] },
+      { start: '10:50 AM', end: '11:30 AM', games: [['Swingers', 'Horse Gurlz'], ['Blue Salsa Batters', "Clyde's Clubbers"]], resting: ['Thunderhanded', 'Ump Yours'] },
+      { start: '11:40 AM', end: '12:20 PM', games: [['Thunderhanded', 'Horse Gurlz'], ['Ump Yours', "Clyde's Clubbers"]], resting: ['Swingers', 'Blue Salsa Batters'] },
+      { start: '12:30 PM', end: '1:10 PM', games: [['Swingers', 'Ump Yours'], ['Thunderhanded', 'Blue Salsa Batters']], resting: ['Horse Gurlz', "Clyde's Clubbers"] },
+      { start: '1:20 PM', end: '2:00 PM', games: [['Swingers', "Clyde's Clubbers"], ['Horse Gurlz', 'Blue Salsa Batters']], resting: ['Thunderhanded', 'Ump Yours'] },
+      { start: '2:10 PM', end: '2:50 PM', games: [['Thunderhanded', "Clyde's Clubbers"], ['Horse Gurlz', 'Ump Yours']], resting: ['Swingers', 'Blue Salsa Batters'] },
     ],
     playoffs: [
-      { start: '2:35 PM', end: '3:15 PM', games: [{ label: 'Semifinal', matchup: '#1 seed vs #4 seed' }, { label: 'Semifinal', matchup: '#2 seed vs #3 seed' }] },
-      { start: '3:30 PM', end: '4:10 PM', games: [{ label: 'Championship', matchup: 'Semifinal winners' }, null] },
+      { start: '3:00 PM', end: '3:40 PM', games: [{ label: 'Semifinal', matchup: '#1 seed vs #4 seed' }, { label: 'Semifinal', matchup: '#2 seed vs #3 seed' }] },
+      { start: '3:50 PM', end: '4:30 PM', games: [{ label: 'Championship', matchup: 'Semifinal winners' }, null] },
     ],
   },
   registrationPolicy: {

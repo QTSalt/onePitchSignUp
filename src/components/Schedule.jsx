@@ -79,7 +79,7 @@ export default function Schedule({ tournament }) {
                 <th className="px-5 py-3 font-bold">Time</th>
                 <th className="px-5 py-3 font-bold">{fields[0]}</th>
                 <th className="px-5 py-3 font-bold">{fields[1]}</th>
-                <th className="px-5 py-3 font-bold">Bye</th>
+                <th className="px-5 py-3 font-bold">Resting</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-stone-200">
@@ -97,7 +97,11 @@ export default function Schedule({ tournament }) {
                     </td>
                   ))}
                   <td className="px-5 py-4 text-stone-500">
-                    <TeamName name={round.bye} selected={selected} />
+                    <div className="flex flex-col gap-0.5">
+                      {round.resting.map((team) => (
+                        <TeamName key={team} name={team} selected={selected} />
+                      ))}
+                    </div>
                   </td>
                 </tr>
               ))}
